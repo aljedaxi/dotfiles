@@ -1,0 +1,7 @@
+decorations: buttonless
+font:
+  size: 16
+  normal:
+    family: Lotion
+    style: Regular
+background_opacity: 0.0

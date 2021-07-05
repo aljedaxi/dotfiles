@@ -1,0 +1,11 @@
+snippet log "description"
+console.log("$1", $1)
+endsnippet
+
+snippet trace "description"
+const tee = f => x => {
+	f (x)
+	return x
+}
+const trace = tee (console.log)
+endsnippet

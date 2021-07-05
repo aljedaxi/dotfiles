@@ -1,0 +1,21 @@
+snippet trace "description"
+const trace = s => {console.log(s); return s;};
+endsnippet
+
+snippet useState "description"
+const [$1, set$1] = useState();
+endsnippet
+
+snippet FC "description"
+const $1 = props => {
+	return (
+		<div>
+			$2
+		</div>
+	);
+};
+endsnippet
+	
+snippet log "description"
+console.log('$1', $1);
+endsnippet

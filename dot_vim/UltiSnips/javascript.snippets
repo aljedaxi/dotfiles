@@ -1,0 +1,24 @@
+snippet trace "description"
+const trace = s => {console.log(s); return s;};
+endsnippet
+	
+snippet log "description"
+console.log('$1', $1);
+endsnippet
+
+snippet describe "description"
+describe('$1', () => {
+	test('$2', () => {
+	});
+});
+endsnippet
+
+snippet test "description"
+test('$1', () => {
+});
+endsnippet
+
+snippet tee "description"
+const tee = f => x => {f(x); return x;};
+endsnippet
+	
