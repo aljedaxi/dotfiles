@@ -1,50 +1,11 @@
-" colemak stuff
-	noremap N J
-	noremap n j
-	noremap e k
-	noremap E K
-
-	noremap i l
-	noremap I L
-	noremap l i
-	noremap L I
-
-	noremap j n
-	noremap J N
-	noremap k e
-	noremap K E
-
-	"noremap ' ;
-	"noremap " :
-
-	noremap gh gk
-	noremap gj gh
-	noremap gk gj
-
-	noremap zh zk
-	"zK does not exist
-	noremap zj zh
-	noremap zJ zH
-	noremap zk zj
-	"zJ does not exist
-	noremap z<Space> zl
-	noremap z<S-Space> zL
-	noremap z<BS> zh
-	noremap z<S-BS> zH
-
-	noremap <C-w>h <C-w>k
-	noremap <C-w>H <C-w>K
-	noremap <C-w>j <C-w>h
-	noremap <C-w>J <C-w>H
-	noremap <C-w>k <C-w>j
-	noremap <C-w>K <C-w>J
-	noremap <C-w><Space> <C-w>l
-	noremap <C-w><S-Space> <C-w>L
-	noremap <C-w><S-BS> <C-w>H
-
 "plug
 call plug#begin()
 	Plug 'mattn/emmet-vim'
+	let g:user_emmet_settings = {
+	\  'javascript.jsx' : {
+		\      'extends' : 'jsx',
+		\  },
+	\}
 
 	Plug 'fvictorio/vim-extract-variable'
 
@@ -60,17 +21,19 @@ call plug#begin()
 	" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 	" let g:UltiSnipsEditSplit="horizontal"
 
+	Plug 'tpope/vim-commentary'
 	" There's also !, which starts the line off with a bang. Type !chmod +x and get :!chmod +x path/to/file.
 	" Press y. to yank an absolute path for the file under the cursor.
 	" Press ~ to go home.
-	Plug 'tpope/vim-commentary'
 	Plug 'tpope/vim-vinegar'
 	Plug 'tpope/vim-fugitive'
-	let g:user_emmet_settings = {
-	\  'javascript.jsx' : {
-		\      'extends' : 'jsx',
-		\  },
-	\}
+	" basically, use select text, use S, then })]'" &c.
+	Plug 'tpope/vim-surround'
+
+	" the core command is :Tab /${regex}
+	" say, to align the values of an object in js, use `:Tab /:\zs`
+	" to align a table in gherkin, use `:Tab /|`
+	Plug 'godlygeek/tabular'
 
 	Plug 'w0rp/ale'
 	" let g:ale_fixers = {'javascript': ['xo']}
@@ -89,7 +52,6 @@ call plug#begin()
 	nmap <C-]> :ALEGoToDefinition <return>
 	nmap <M-F7> :ALEFindReferences <return>
 	nmap <S-F6> :ALERename <return>
-
 call plug#end()
 
 "wangblows
@@ -157,3 +119,47 @@ call plug#end()
 		"js
 		autocmd BufEnter *.js set shiftwidth=2
 		autocmd BufEnter *.js set tabstop=2
+
+" colemak stuff
+	noremap N J
+	noremap n j
+	noremap e k
+	noremap E K
+
+	noremap i l
+	noremap I L
+	noremap l i
+	noremap L I
+
+	noremap j n
+	noremap J N
+	noremap k e
+	noremap K E
+
+	"noremap ' ;
+	"noremap " :
+
+	noremap gh gk
+	noremap gj gh
+	noremap gk gj
+
+	noremap zh zk
+	"zK does not exist
+	noremap zj zh
+	noremap zJ zH
+	noremap zk zj
+	"zJ does not exist
+	noremap z<Space> zl
+	noremap z<S-Space> zL
+	noremap z<BS> zh
+	noremap z<S-BS> zH
+
+	noremap <C-w>h <C-w>k
+	noremap <C-w>H <C-w>K
+	noremap <C-w>j <C-w>h
+	noremap <C-w>J <C-w>H
+	noremap <C-w>k <C-w>j
+	noremap <C-w>K <C-w>J
+	noremap <C-w><Space> <C-w>l
+	noremap <C-w><S-Space> <C-w>L
+	noremap <C-w><S-BS> <C-w>H
