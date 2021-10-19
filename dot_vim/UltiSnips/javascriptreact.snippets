@@ -2,8 +2,8 @@ snippet trace "description"
 const trace = s => {console.log(s); return s;};
 endsnippet
 
-snippet useState "description"
-const [$1, set$1] = useState();
+snippet useState "use state"
+const [$1, set${1/\w+\s*/\u$0/}] = useState ()
 endsnippet
 
 snippet FC "description"

@@ -1,6 +1,10 @@
 snippet trace "description"
 const trace = s => {console.log(s); return s;};
 endsnippet
+
+snippet jsonTrace "description"
+const jsonTrace = s => {console.log(JSON.stringify(s,undefined,2)); return s;};
+endsnippet
 	
 snippet log "description"
 console.log('$1', $1);

@@ -9,3 +9,26 @@ const tee = f => x => {
 }
 const trace = tee (console.log)
 endsnippet
+
+snippet c "c"
+c ($1) ({}) ([
+])
+endsnippet
+
+snippet cw "cw"
+cw ($1) ({})
+endsnippet
+
+snippet useState "use state"
+const [$1, set${1/\w+\s*/\u$0/}] = useState ()
+endsnippet
+
+snippet FC "description"
+const $1 = props => {
+	return (
+		<div>
+			$2
+		</div>
+	);
+};
+endsnippet

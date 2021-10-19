@@ -55,7 +55,6 @@ call plug#begin()
 
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
-	Plug 'ryanolsonx/vim-lsp-typescript'
 	" let g:UltiSnipsExpandTrigger="<tab>"
 	" let g:UltiSnipsJumpForwardTrigger="<c-b>"
 	" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -78,10 +77,18 @@ call plug#begin()
 	" let g:ale_linters = {'javascript': ['xo']}
 	let g:ale_sign_error = 'E'
 	let g:ale_sign_warning = 'W'
+	highlight ALEWarning gui='underline' cterm='underline'
+	highlight ALEError gui='underline' cterm='underline'
 	" let g:ale_lint_text_changed = 'never'
 	" let g:ale_lint_insert_leave = 0
 	" let g:ale_lint_on_enter = 0
 	" let g:ale_fix_on_save = 1
+
+	" same keybindings as webstorm
+	nmap <C-M-]> <C-]>
+	nmap <C-]> :ALEGoToDefinition <return>
+	nmap <M-F7> :ALEFindReferences <return>
+	nmap <S-F6> :ALERename <return>
 
 call plug#end()
 
@@ -120,38 +127,33 @@ call plug#end()
 	set ruler
 	colorscheme al-daxiin
 	hi Normal guibg=NONE ctermbg=NONE
-
-" language server stuff
-	" https://medium.com/@vanuan/vim-for-typescript-and-react-in-2020-9724b9139be2
-	" https://github.com/prabirshrestha/vim-lsp
-	" map <F8>   :LspDocumentDiagnostics <CR>
-	" map <F2>   :LspHover <CR>
-	" map <A-F6> :LspReon
-	" map <A-F7> :LspReferences <CR>
-
+	" like this algo
+	set diffopt+=algorithm:histogram
+	command SpreadList s/, /,\r\t/g
+	command T !mpc toggle
 
 " language stuff
 	filetype plugin on
 	"python stuff
-	autocmd BufEnter *.py set shiftwidth=4
-	autocmd BufEnter *.py set tabstop=4
-	autocmd BufEnter *.py set expandtab
+		autocmd BufEnter *.py set shiftwidth=4
+		autocmd BufEnter *.py set tabstop=4
+		autocmd BufEnter *.py set expandtab
 
 	"java stuff
-	let java_allow_cpp_keywords=1
+		let java_allow_cpp_keywords=1
 
 	" lisp stuff
-	"set lisp
-	"set sm
+		"set lisp
+		"set sm
 
 	"yaml stuff
-	autocmd BufEnter *.yaml set shiftwidth=2
-	autocmd BufEnter *.yaml set tabstop=2
-	autocmd BufEnter *.yaml set expandtab
-	autocmd BufEnter *.yml set shiftwidth=2
-	autocmd BufEnter *.yml set tabstop=2
-	autocmd BufEnter *.yml set expandtab
+		autocmd BufEnter *.yaml set shiftwidth=2
+		autocmd BufEnter *.yaml set tabstop=2
+		autocmd BufEnter *.yaml set expandtab
+		autocmd BufEnter *.yml set shiftwidth=2
+		autocmd BufEnter *.yml set tabstop=2
+		autocmd BufEnter *.yml set expandtab
 
-	"js
-	autocmd BufEnter *.js set shiftwidth=2
-	autocmd BufEnter *.js set tabstop=2
+		"js
+		autocmd BufEnter *.js set shiftwidth=2
+		autocmd BufEnter *.js set tabstop=2
