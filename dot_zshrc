@@ -53,3 +53,5 @@ bindkey '^e' edit-command-line
 
 export PATH="$HOME/.sh:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+eval "$(zoxide init zsh)"
