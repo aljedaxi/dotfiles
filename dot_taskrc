@@ -29,3 +29,12 @@ data.location=~/.task
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/solarized-light-256.theme
 #include /usr/local/Cellar/task/2.5.1/share/doc/task/rc/no-color.theme
 
+news.version=2.6.0
+context.failures.read=project:failure
+context.failures.write=project:failure
+context.newFeatureFiles.read=project:newFeatureFiles
+context.newFeatureFiles.write=project:newFeatureFiles
+context.ai.read=proj:ai
+context.ai.write=proj:ai
+context.music.read=+music
+context.music.write=+music

@@ -6,6 +6,7 @@ call plug#begin()
 		\      'extends' : 'jsx',
 		\  },
 	\}
+	Plug 'NoahTheDuke/vim-just'
 
 	Plug 'fvictorio/vim-extract-variable'
 
@@ -90,7 +91,7 @@ call plug#end()
 	colorscheme al-daxiin
 	hi Normal guibg=NONE ctermbg=NONE
 	" like this algo
-	set diffopt+=algorithm:histogram
+	" set diffopt+=algorithm:histogram
 	command SpreadList s/, /,\r\t/g
 	command T !mpc toggle
 

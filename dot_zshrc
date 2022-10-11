@@ -1,9 +1,10 @@
 #mac stuff
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-alias resetWindows="yabai -m space --balance"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 export HOMEBREW_INSTALL_BADGE="☕️ 🐸"
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export EDITOR=/usr/local/bin/vim
 
 #al daxiin config for the zoomer shell
 HISTFILE=~/.histfile
@@ -17,15 +18,19 @@ leftScreenDimensions=1440x900
 PROMPT="%F{175}%2~ %(?.%F{white}.%F{red})> "
 
 alias please="sudo" \
+	cd="z" \
+	ls="exa" \
 	ll="ls -l" \
 	networks-fucked-man="sudo systemctl restart NetworkManager.service" \
 	xmentask='task add tag:xMentium pri:M' \
+	test-failure='task add tag:failures pri:M' \
 	gen-ctags='ctags -R 2> /dev/null' \
 	left-screen-shot="scrot -o 'x.png' ; convert x.png -crop ${leftScreenDimensions}+0+0 screenshot.png; rm x.png; mv screenshot.png " \
 	left-timed-shot="scrot -o 'x.png' -cd 5; convert x.png -crop ${leftScreenDimensions}+0+0 screenshot.png; rm x.png; mv screenshot.png " \
 	xmenStart="sh .screenlayout/default.sh; chromium &; cd xmentium/expression-management-app; sh launch.sh -m dbdump -s development" \
 	prettify="prettier --write --end-of-line lf --arrow-parens avoid --jsx-bracket-same-line --single-quote --use-tabs --print-width 80"
-
+	
+fpath=(~/.zsh $fpath)
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
 if [ $(date +'%j') != $updated_at ]; then
@@ -48,10 +53,11 @@ export KEYTIMEOUT=1
 autoload -U add-zsh-hook
 
 #edit command with ^c
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+# autoload edit-command-line; zle -N edit-command-line
+# bindkey '^e' edit-command-line
 
-export PATH="$HOME/.sh:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="$PATH:/Users/daxi/.deno/bin:$HOME/.sh:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/local/opt/gnu-sed/libexec/gnubin:$HOME/.deno/bin:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/platform-tools:/usr/local/anaconda3/bin"
 
 eval "$(zoxide init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

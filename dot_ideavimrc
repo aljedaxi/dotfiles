@@ -1,3 +1,108 @@
+"plug
+call plug#begin()
+	Plug 'mattn/emmet-vim'
+	let g:user_emmet_settings = {
+	\  'javascript.jsx' : {
+		\      'extends' : 'jsx',
+		\  },
+	\}
+
+	Plug 'fvictorio/vim-extract-variable'
+
+	Plug 'sheerun/vim-polyglot'
+	Plug 'pangloss/vim-javascript'
+	let g:javascript_plugin_jsdoc = 1
+	Plug 'HerringtonDarkholme/yats.vim'
+
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+	" let g:UltiSnipsExpandTrigger="<tab>"
+	" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+	" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+	" let g:UltiSnipsEditSplit="horizontal"
+
+	Plug 'tpope/vim-commentary'
+	" There's also !, which starts the line off with a bang. Type !chmod +x and get :!chmod +x path/to/file.
+	" Press y. to yank an absolute path for the file under the cursor.
+	" Press ~ to go home.
+	Plug 'tpope/vim-vinegar'
+	Plug 'tpope/vim-fugitive'
+	" basically, use select text, use S, then })]'" &c.
+	Plug 'tpope/vim-surround'
+
+	" the core command is :Tab /${regex}
+	" say, to align the values of an object in js, use `:Tab /:\zs`
+	" to align a table in gherkin, use `:Tab /|`
+	Plug 'godlygeek/tabular'
+
+call plug#end()
+
+"wangblows
+	" cmap jc !javac %
+	" cmap jr !javac %
+	nmap <C-PageUp> ]s
+	nmap <C-PageDown> [s
+	set nu!
+	set ai
+	compiler gcc
+	syntax on
+	set t_Co=256
+	set shiftwidth=2
+	set tabstop=2
+	set backspace=2
+	set nrformats=
+	set spell spelllang=en_ca
+	set fileformat=unix
+	set foldlevel=0
+	set hlsearch
+	set incsearch
+	se guifont=terminus:h12:cANSI
+	set nocompatible
+  "this autofolds via indent, but shows the first level of indent. Set foldlevel to 0 to fold everything
+  "zm increases foldlevel by one; zr decreases by one; zR decreases to zero
+  set foldmethod=indent
+
+"general
+  "the filesystem browser
+  let g:netrw_banner = 0
+	" no backups
+	set nobk
+	" mouse mode
+	set mouse=a
+	set ruler
+	colorscheme al-daxiin
+	hi Normal guibg=NONE ctermbg=NONE
+	" like this algo
+	set diffopt+=algorithm:histogram
+	command SpreadList s/, /,\r\t/g
+	command T !mpc toggle
+
+" language stuff
+	filetype plugin on
+	"python stuff
+		autocmd BufEnter *.py set shiftwidth=4
+		autocmd BufEnter *.py set tabstop=4
+		autocmd BufEnter *.py set expandtab
+
+	"java stuff
+		let java_allow_cpp_keywords=1
+
+	" lisp stuff
+		"set lisp
+		"set sm
+
+	"yaml stuff
+		autocmd BufEnter *.yaml set shiftwidth=2
+		autocmd BufEnter *.yaml set tabstop=2
+		autocmd BufEnter *.yaml set expandtab
+		autocmd BufEnter *.yml set shiftwidth=2
+		autocmd BufEnter *.yml set tabstop=2
+		autocmd BufEnter *.yml set expandtab
+
+		"js
+		autocmd BufEnter *.js set shiftwidth=2
+		autocmd BufEnter *.js set tabstop=2
+
 " colemak stuff
 	noremap N J
 	noremap n j
@@ -41,118 +146,3 @@
 	noremap <C-w><Space> <C-w>l
 	noremap <C-w><S-Space> <C-w>L
 	noremap <C-w><S-BS> <C-w>H
-
-"plug
-call plug#begin()
-	Plug 'mattn/emmet-vim'
-
-	Plug 'fvictorio/vim-extract-variable'
-
-	Plug 'sheerun/vim-polyglot'
-	Plug 'pangloss/vim-javascript'
-	let g:javascript_plugin_jsdoc = 1
-	Plug 'HerringtonDarkholme/yats.vim'
-
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
-	Plug 'ryanolsonx/vim-lsp-typescript'
-	" let g:UltiSnipsExpandTrigger="<tab>"
-	" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-	" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-	" let g:UltiSnipsEditSplit="horizontal"
-
-	" There's also !, which starts the line off with a bang. Type !chmod +x and get :!chmod +x path/to/file.
-	" Press y. to yank an absolute path for the file under the cursor.
-	" Press ~ to go home.
-	Plug 'tpope/vim-commentary'
-	Plug 'tpope/vim-vinegar'
-	Plug 'tpope/vim-fugitive'
-	let g:user_emmet_settings = {
-	\  'javascript.jsx' : {
-		\      'extends' : 'jsx',
-		\  },
-	\}
-
-	Plug 'w0rp/ale'
-	" let g:ale_fixers = {'javascript': ['xo']}
-	" let g:ale_linters = {'javascript': ['xo']}
-	let g:ale_sign_error = 'E'
-	let g:ale_sign_warning = 'W'
-	" let g:ale_lint_text_changed = 'never'
-	" let g:ale_lint_insert_leave = 0
-	" let g:ale_lint_on_enter = 0
-	" let g:ale_fix_on_save = 1
-
-	Plug 'vimwiki/vimwiki'
-call plug#end()
-
-"wangblows
-	" cmap jc !javac %
-	" cmap jr !javac %
-	nmap <C-PageUp> ]s
-	nmap <C-PageDown> [s
-	set nu!
-	set ai
-	compiler gcc
-	syntax on
-	set t_Co=256
-	set shiftwidth=2
-	set tabstop=2
-	set backspace=2
-	set nrformats=
-	set spell spelllang=en_ca
-	set fileformat=unix
-	set foldlevel=0
-	set hlsearch
-	set incsearch
-	se guifont=terminus:h12:cANSI
-	set nocompatible
-  "this autofolds via indent, but shows the first level of indent. Set foldlevel to 0 to fold everything
-  "zm increases foldlevel by one; zr decreases by one; zR decreases to zero
-  set foldmethod=indent
-
-"general
-  "the filesystem browser
-  let g:netrw_banner = 0
-	" no backups
-	set nobk
-	" mouse mode
-	set mouse=a
-	set ruler
-	colorscheme al-daxiin
-	hi Normal guibg=NONE ctermbg=NONE
-
-" language server stuff
-	" https://medium.com/@vanuan/vim-for-typescript-and-react-in-2020-9724b9139be2
-	" https://github.com/prabirshrestha/vim-lsp
-	" map <F8>   :LspDocumentDiagnostics <CR>
-	" map <F2>   :LspHover <CR>
-	" map <A-F6> :LspReon
-	" map <A-F7> :LspReferences <CR>
-
-
-" language stuff
-	filetype plugin on
-	"python stuff
-	autocmd BufEnter *.py set shiftwidth=4
-	autocmd BufEnter *.py set tabstop=4
-	autocmd BufEnter *.py set expandtab
-
-	"java stuff
-	let java_allow_cpp_keywords=1
-
-	" lisp stuff
-	"set lisp
-	"set sm
-
-	"yaml stuff
-	autocmd BufEnter *.yaml set shiftwidth=2
-	autocmd BufEnter *.yaml set tabstop=2
-	autocmd BufEnter *.yaml set expandtab
-	autocmd BufEnter *.yml set shiftwidth=2
-	autocmd BufEnter *.yml set tabstop=2
-	autocmd BufEnter *.yml set expandtab
-
-	"js
-	autocmd BufEnter *.js set shiftwidth=2
-	autocmd BufEnter *.js set tabstop=2

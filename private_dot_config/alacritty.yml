@@ -4,4 +4,5 @@ font:
   normal:
     family: Lotion
     style: Regular
-background_opacity: 0.0
+window: 
+  opacity: 0.0

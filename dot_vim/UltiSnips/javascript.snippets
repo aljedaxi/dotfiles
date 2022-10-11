@@ -1,13 +1,13 @@
 snippet trace "description"
-const trace = s => {console.log(s); return s;};
+const trace = s => (console.log(s), s)
 endsnippet
 
 snippet jsonTrace "description"
-const jsonTrace = s => {console.log(JSON.stringify(s,undefined,2)); return s;};
+const jsonTrace = s => (console.log(JSON.stringify(s,undefined,2)), s)
 endsnippet
 	
 snippet log "description"
-console.log('$1', $1);
+console.log({$1})
 endsnippet
 
 snippet describe "description"
@@ -25,4 +25,23 @@ endsnippet
 snippet tee "description"
 const tee = f => x => {f(x); return x;};
 endsnippet
-	
+
+snippet useState "use state"
+const [$1, set${1/\w+\s*/\u$0/}] = useState ()
+endsnippet
+
+snippet FC "React function component"
+const $1 = props => {
+	const {children} = props
+	return (
+		<div>
+			{children}
+		</div>
+	)
+}
+endsnippet
+
+snippet useEffect "description"
+useEffect (() => {
+}, [])
+endsnippet

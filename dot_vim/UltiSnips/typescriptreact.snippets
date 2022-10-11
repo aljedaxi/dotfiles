@@ -23,12 +23,22 @@ snippet useState "use state"
 const [$1, set${1/\w+\s*/\u$0/}] = useState ()
 endsnippet
 
-snippet FC "description"
-const $1 = props => {
+snippet useReducer "use reducer"
+const reducer = (acc, {type, payload}) => {
+}
+const [$1, dispatch${1/\w+\s*/\u$0/}] = useReducer (reducer, )
+endsnippet
+
+snippet FC "Function Component"
+export const $1 = props => {
 	return (
-		<div>
+		<Fragment>
 			$2
-		</div>
-	);
-};
+		</Fragment>
+	)
+}
+endsnippet
+
+snippet max-len "description"
+// eslint-disable-next-line max-len
 endsnippet
