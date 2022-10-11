@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+getFirefoxData | jq '.windows[0].tabs | .[] | .entries | .[] | .url' | sort | uniq # | grep original | deno run ~/getToJustUrl.mjs"

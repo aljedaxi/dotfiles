@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+# const argString = Deno.args.join(' ')
+# const query = argString.length ? argString : 'big chungus'
+# fetch(`https://api.marginalia.nu/public/search/${query}`)
+# 	.then(r => r.json())
+# 	.then(d => 
+#     d.results.forEach (({url, title, description}) => (
+#       console.log(`${url} — ${title} — ${description}`)
+#     ))
+#   )
+
+query=`deno eval "console.log (encodeURIComponent (Deno.args))" $@`
+curl --silent https://api.marginalia.nu/public/search/$query \
+	| jq -c '.results[] | {title, url, description}' \
+	| ndjsonToTsv \
+	| fzf -e --delimiter '\t' --with-nth 1 --preview-window up,wrap --preview='echo {3}' \
+	| awk -F"\t" '{print $2}' \
+	| tee -a ~/browserHistory.txt \
+	| xargs getWebpageBody

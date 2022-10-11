@@ -1,0 +1,14 @@
+#!/usr/bin/env deno run
+import {readLines} from "https://deno.land/std@0.154.0/io/buffer.ts";
+
+const testData = 'I20221004-10:29:38.618(-6)? {"firstSplit":{"ops":[{"insert":"Placeholders With"},{"insert":"\n"}]}}'
+
+const dateString = new Date().toISOString().split('T')[0].replace(/-/g, '')
+const r = new RegExp(`(I|W|D)${dateString}`)
+for await (const l of readLines(Deno.stdin)) {
+	console.log(
+		r.test(l)
+			? l.split(' ').slice(1).join(' ').trim()
+			: l
+	)
+}

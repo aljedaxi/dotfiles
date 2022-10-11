@@ -1,0 +1,15 @@
+#!/usr/bin/env deno run
+
+import {readLines} from "https://deno.land/std@0.154.0/io/buffer.ts";
+
+const pipe = fs => x => fs.reduce ((v, f) => f (v), x)
+for await (const l of readLines (Deno.stdin)) {
+	pipe ([
+		JSON.parse,
+		Object.entries,
+		xs => xs.map(([k, v]) => v),
+		xs => xs.join('\t'),
+		console.log,
+	]) (l)
+}
+
